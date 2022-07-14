@@ -1,0 +1,54 @@
+{
+  // HACK: until tstl updates their extension
+  //"$schema": "https://raw.githubusercontent.com/TypeScriptToLua/vscode-typescript-to-lua/master/tsconfig-schema.json",
+  "compilerOptions": {
+    // Required
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "moduleResolution": "Node",
+    "module": "NodeNext",
+    "moduleDetection": "force",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "pretty": true,
+
+    // Configurable
+    "rootDirs": ["shared", "client", "server"],
+    "outDir": "../dist",
+    "types": [
+      "../node_modules/typescript-to-lua/language-extensions",
+      "../node_modules/lua-types/5.1",
+      "../node_modules/pzts-types/types/generated/Zomboid_API",
+      "../plugins/debug/types"
+    ],
+    "plugins": [
+      {
+        "transform": "../plugins/debug",
+        "enabled": true,
+        "verbose": true
+      }
+    ],
+    "composite": true,
+    "tsBuildInfoFile": "../dist/.tsbuildinfo"
+  },
+  "tstl": {
+    "luaTarget": "5.1",
+    "noImplicitSelf": true,
+    "tstlVerbose": false,
+    "luaLibImport": "none",
+    "noHeader": true,
+    "sourceMapTraceback": false,
+    "luaPlugins": [
+      { "name": "../plugins/addHeaderFooter" },
+      { "name": "../plugins/fixRequireStatements" }
+    ],
+    "noResolvePaths": ["./shared", "./client", "./server", "../plugins"]
+  },
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode", // The TypeScript formatter
+    "dbaeumer.vscode-eslint", // The TypeScript linter
+    "typescript-to-lua.vscode-typescript-to-lua" // The TypeScript-to-lua helper
+  ]
+}

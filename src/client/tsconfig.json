@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.build.json",
+  "compilerOptions": {
+    "types": [
+      "../../node_modules/typescript-to-lua/language-extensions",
+      "../../node_modules/lua-types/5.1",
+      "../../node_modules/pzts-types/types/generated/Zomboid_API",
+      "../../plugins/debug/types"
+    ],
+    "rootDirs": ["../client", "../shared"],
+    "tsBuildInfoFile": "../../dist/client.tsbuildinfo"
+  },
+  "references": [{ "path": "../shared" }],
+  "include": ["../client", "../shared"],
+  "exclude": ["../server"]
+}
