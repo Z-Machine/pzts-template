@@ -22,10 +22,7 @@
     "rootDirs": ["shared", "client", "server"],
     "outDir": "../dist",
     "types": [
-      "../node_modules/typescript-to-lua/language-extensions",
-      "../node_modules/lua-types/5.1",
-      "../node_modules/pzts-types/types/generated/Zomboid_API",
-      "../plugins/debug/types"
+      "../typing",
     ],
     "plugins": [
       {
