@@ -23,6 +23,19 @@ import { config, packageInfo } from "./util/config";
     console.timeLog(timeLabel, chalk.green("Copying assets..."));
     fs.copySync(assetDir, modDir); // Copy assets over.
 
+    {
+        console.timeLog(timeLabel, chalk.green("Copying Zomboid.lua..."));
+        const sharedDir = path.join(distDir, `./shared/`);
+        const zomboidLua = path.join(__dirname, `../typing/PipeWrench/Zomboid.lua`);
+
+        fs.ensureDirSync(sharedDir);
+        if (fs.statSync(zomboidLua).isFile()) {
+            const copyLocation = path.join(sharedDir, path.basename(zomboidLua));
+            fs.copySync(zomboidLua, copyLocation)
+        }
+    }
+
+
     console.timeLog(timeLabel, chalk.green("Copying lua files..."));
     const luaDir = path.join(modDir, `./media/lua/`);
     fs.ensureDirSync(luaDir);

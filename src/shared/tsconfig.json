@@ -4,7 +4,7 @@
     "types": [
       "../../typing",
     ],
-    "rootDirs": ["."],
+    "rootDirs": ["../shared"],
     "tsBuildInfoFile": "../../dist/shared.tsbuildinfo"
   },
   "include": ["../shared"],
