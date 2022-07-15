@@ -30,7 +30,7 @@
     "plugins": [
       {
         "transform": "../plugins/debug",
-        "enabled": true,
+        "enabled": false, // This controls if certain macros evaluate. $print
         "verbose": true
       }
     ],
@@ -48,7 +48,6 @@
       { "name": "../plugins/addHeaderFooter" },
       { "name": "../plugins/fixRequireStatements" }
     ],
-    "noResolvePaths": ["./shared", "./client", "./server", "../plugins"]
   },
   "exclude": ["node_modules"]
 }

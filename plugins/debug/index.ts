@@ -6,7 +6,7 @@ import { transformerDebug, transformerDiagnostic } from "./util";
 import { transformToIIFEDebugPrint, transformToInlineDebugPrint } from "./dbg";
 import { transformGit } from "./git";
 import { transformTime } from "./time";
-import { transformError, transfromPrint } from "./print";
+import { transformLine, transfromPrint } from "./print";
 
 /**
  * This plugin handles a bunch of precompile related functionality.
@@ -78,7 +78,7 @@ function visitNodeAndChildren(
 const MacroFunctionName = {
     dbg: `$dbg`,
     print: `$print`,
-    error: `$error`,
+    line: `$line`,
     git: `$git`,
     package: `$package`,
     time: `$compileTime`,
@@ -121,10 +121,8 @@ function handleDebugCallExpression(
                 ? transfromPrint(node)
                 : factory.createVoidExpression(factory.createIdentifier(`undefined`));
         }
-        case MacroFunctionName.error: {
-            return enabled
-                ? transformError(node)
-                : factory.createVoidExpression(factory.createIdentifier(`undefined`));
+        case MacroFunctionName.line: {
+            return transformLine(node)
         }
         case MacroFunctionName.time: {
             return transformTime(node);

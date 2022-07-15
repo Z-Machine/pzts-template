@@ -1,26 +1,27 @@
-export interface $DebugInfo {
+declare interface $DebugInfo {
     file: string;
     lineNumber: number;
     character: number;
     rawText: string;
 }
 
-export function $dbg<T>(expression: T): T;
-export function $dbg<T>(
+declare function $dbg<T>(expression: T): T;
+declare function $dbg<T>(
     expression: T,
     customHandler: (value: Readonly<T>, debbug: $DebugInfo) => void
 ): T;
 
 /**
  * Will prefix a print statement with `[filePath:fileNumber]`
+ * This macro's output is toggled with the `enabled` setting in plugins.
  */
-export function $print(...params: unknown[]): void;
+declare function $print(...params: unknown[]): void;
 /**
- * Will prefix an error statement with `[filePath:fileNumber]`
+ * Will return `[filePath:fileNumber]` the same as the prefix of $print.
  */
-export function $error(...params: unknown[]): never;
+declare function $line(): string;
 
-export interface $git {
+declare interface $git {
     /**
      * The name of the branch this project is on
      */
@@ -54,15 +55,15 @@ type $GitProps<K extends keyof $git> = Pick<$git, K>;
 /**
  * Macro that returns an object containing all the git information
  */
-export function $git(): $git;
+declare function $git(): $git;
 
 /**
  * Macro that returns an object containing specified git properties
  * @param props The properties to filter out
  */
-export function $git<K extends keyof $git>(...props: K[]): $GitProps<K>;
+declare function $git<K extends keyof $git>(...props: K[]): $GitProps<K>;
 
 /**
  * Returns the unix timestamp of the time the code was compiled
  */
-export function $compileTime(): number;
+declare function $compileTime(): number;

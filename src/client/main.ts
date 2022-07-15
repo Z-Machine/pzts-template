@@ -1,4 +1,3 @@
-import { $print, $error } from "../../plugins/debug/types";
 import { subdirTest } from "./dir/subdir/test";
 import { dirTest } from "./dir/test";
 import { makeHello } from "./mainShared";
@@ -17,6 +16,3 @@ clientTest();
 dirTest();
 subdirTest();
 DoesThisWork();
-
-$print(`Hello World`);
-$error(getfenv());
