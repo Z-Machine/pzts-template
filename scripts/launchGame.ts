@@ -11,6 +11,5 @@ import { config } from "./util/config";
         cwd: gameDir,
         stdio: ["ignore"],
         shell: "/bin/bash",
-        timeout: 500
     });
 })();

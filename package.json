@@ -25,7 +25,6 @@
     "chalk": "^4.1.2",
     "fs-extra": "^10.1.0",
     "lua-types": "^2.11.0",
-    "pzts-types": "github:Z-Machine/pzts-types",
     "ts-node": "^10.8.2",
     "typescript": "^4.7.4",
     "typescript-to-lua": "^1.6.3",

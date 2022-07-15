@@ -1,5 +1,5 @@
 {
     "outDir": "/mnt/v/!games/Zomboid/mods",
     "gameBin": "/mnt/v/SteamLibrary/steamapps/common/ProjectZomboid/ProjectZomboid64.exe",
-    "options": ["-debug"]
+    "options": ["-debug", "-cachedir=\"V:/!games/Zomboid\""]
 }

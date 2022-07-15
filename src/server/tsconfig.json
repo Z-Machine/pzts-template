@@ -7,7 +7,7 @@
       "../../node_modules/pzts-types/types/generated/Zomboid_API",
       "../../plugins/debug/types"
     ],
-    "rootDirs": [".", "../shared"],
+    "rootDirs": ["../server"],
     "tsBuildInfoFile": "../../dist/client.tsbuildinfo"
   },
   "references": [{ "path": "../shared" }],
