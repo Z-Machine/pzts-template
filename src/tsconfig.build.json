@@ -38,7 +38,7 @@
     "luaTarget": "5.1",
     "noImplicitSelf": true,
     "tstlVerbose": false,
-    "luaLibImport": "none",
+    "luaLibImport": "none", // You get this from pzts-common
     "noHeader": true,
     "sourceMapTraceback": false,
     "luaPlugins": [
