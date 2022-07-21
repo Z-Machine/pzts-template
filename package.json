@@ -1,37 +1,46 @@
 {
-  "name": "zomboid-template",
-  "private": true,
-  "version": "0.0.0",
-  "description": "A mod for Project Zomboid",
-  "keywords": [
-    "project zomboid",
-    "typescript",
-    "lua"
-  ],
-  "type": "commonjs",
-  "engines": {
-    "node": "^14.13.1 || >=16.0.0"
-  },
-  "scripts": {
-    "start": "npm run dev",
-    "clean": "ts-node scripts/clean.ts",
-    "build": "npm run clean && tstl --project src/tsconfig.build.json",
-    "dev": "tstl --project src/tsconfig.build.json --watch",
-    "game": "ts-node scripts/launchGame.ts",
-    "bundle": "ts-node scripts/bundle.ts"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "^9.0.13",
-    "chalk": "^4.1.2",
-    "fs-extra": "^10.1.0",
-    "lua-types": "^2.11.0",
-    "ts-node": "^10.8.2",
-    "typescript": "^4.7.4",
-    "typescript-to-lua": "^1.6.3",
-    "typescript-tstl-plugin": "^0.3.2"
-  },
-  "dependencies": {
-    "Zomboid": "github:Konijima/PipeWrench-Zomboid-Types",
-    "ZomboidEvents": "github:Konijima/PipeWrench-ZomboidEvents-Types"
-  }
+    "name": "zomboid-template",
+    "private": true,
+    "version": "0.0.0",
+    "description": "A mod for Project Zomboid",
+    "keywords": [
+        "project zomboid",
+        "typescript",
+        "lua"
+    ],
+    "type": "commonjs",
+    "engines": {
+        "node": "^14.13.1 || >=16.0.0"
+    },
+    "scripts": {
+        "start": "npm run dev",
+        "clean": "ts-node scripts/clean.ts",
+        "build": "npm run clean && tstl --project src/tsconfig.build.json",
+        "dev": "tstl --project src/tsconfig.build.json --watch",
+        "game": "ts-node scripts/launchGame.ts",
+        "bundle": "ts-node scripts/bundle.ts",
+        "lint": "eslint --ext .ts,tsx src/",
+        "lint:fix": "eslint --fix --ext .ts,tsx src/"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "^9.0.13",
+        "@typescript-eslint/eslint-plugin": "^5.30.7",
+        "@typescript-eslint/parser": "^5.30.7",
+        "chalk": "^4.1.2",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "fs-extra": "^10.1.0",
+        "lua-types": "^2.11.0",
+        "ts-node": "^10.8.2",
+        "typescript": "^4.7.4",
+        "typescript-to-lua": "^1.6.3",
+        "typescript-tstl-plugin": "^0.3.2"
+    },
+    "dependencies": {
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-airbnb-typescript": "^17.0.0",
+        "prettier": "^2.7.1",
+        "Zomboid": "github:Konijima/PipeWrench-Zomboid-Types",
+        "ZomboidEvents": "github:Konijima/PipeWrench-ZomboidEvents-Types"
+    }
 }

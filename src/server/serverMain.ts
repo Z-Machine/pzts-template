@@ -1,8 +1,8 @@
 import { makeHello } from "../shared/mainShared";
 
-export function makeHelloServer(from: string) {
+export default function makeHelloServer(from: string) {
     print(`[Server] Hello from ${from}`);
 }
 
-makeHello("Server")
-makeHelloServer("Server")
+makeHello("Server");
+makeHelloServer("Server");

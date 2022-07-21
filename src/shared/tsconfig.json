@@ -1,12 +1,10 @@
 {
-  "extends": "../tsconfig.build.json",
-  "compilerOptions": {
-    "types": [
-      "../../typing",
-    ],
-    "rootDirs": ["../shared"],
-    "tsBuildInfoFile": "../../dist/shared.tsbuildinfo"
-  },
-  "include": ["../shared"],
-  "exclude": ["../server", "../client"]
+    "extends": "../tsconfig.build.json",
+    "compilerOptions": {
+        "types": ["../../typing"],
+        "rootDirs": ["../shared"],
+        "tsBuildInfoFile": "../../dist/shared.tsbuildinfo"
+    },
+    "include": ["../shared"],
+    "exclude": ["../server", "../client"]
 }

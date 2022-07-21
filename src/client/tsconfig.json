@@ -1,13 +1,11 @@
 {
-  "extends": "../tsconfig.build.json",
-  "compilerOptions": {
-    "types": [
-      "../../typing",
-    ],
-    "rootDirs": ["../client"],
-    "tsBuildInfoFile": "../../dist/client.tsbuildinfo"
-  },
-  "references": [{ "path": "../shared" }],
-  "include": ["../client", "../shared"],
-  "exclude": ["../server"]
+    "extends": "../tsconfig.build.json",
+    "compilerOptions": {
+        "types": ["../../typing"],
+        "rootDirs": ["../client"],
+        "tsBuildInfoFile": "../../dist/client.tsbuildinfo"
+    },
+    "references": [{ "path": "../shared" }],
+    "include": ["../client", "../shared"],
+    "exclude": ["../server"]
 }
