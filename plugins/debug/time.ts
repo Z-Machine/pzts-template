@@ -1,6 +1,6 @@
 import ts, { factory } from "typescript";
 
-export function transformTime(expression: ts.CallExpression): ts.Expression {
+export default function transformTime(expression: ts.CallExpression): ts.Expression {
     let typeName = `UnixTimestamp`;
 
     const [kindName] = expression.arguments;
@@ -14,10 +14,7 @@ export function transformTime(expression: ts.CallExpression): ts.Expression {
         case `DateTime`: {
             return factory.createNonNullExpression(
                 factory.createCallExpression(
-                    factory.createPropertyAccessExpression(
-                        factory.createIdentifier(`DateTime`),
-                        `fromIsoDate`
-                    ),
+                    factory.createPropertyAccessExpression(factory.createIdentifier(`DateTime`), `fromIsoDate`),
                     undefined,
                     [factory.createStringLiteral(date.toISOString())]
                 )

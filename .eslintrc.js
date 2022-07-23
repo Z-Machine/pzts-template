@@ -16,7 +16,7 @@ module.exports = {
         ecmaVersion: 2020,
         sourceType: "module",
         tsconfigRootDir: __dirname,
-        project: "./src/tsconfig.build.json",
+        project: ["./src/tsconfig.build.json", "./scripts/tsconfig.json", "./plugins/tsconfig.json"],
     },
     rules: {
         // Prettier
@@ -72,6 +72,7 @@ module.exports = {
                 enforceInMethodNames: true,
             },
         ],
+        "@typescript-eslint/no-throw-literal": 0,
         // eslint
         eqeqeq: ["error", "always", { null: "never" }],
         "no-restricted-globals": 0,
@@ -82,4 +83,15 @@ module.exports = {
         "no-console": 2,
         "no-param-reassign": 0,
     },
+    overrides: [
+        {
+            files: ["./scripts/**/*", "./plugins/**/*"],
+            rules: {
+                "@typescript-eslint/restrict-template-expressions": 0,
+                "import/no-extraneous-dependencies": 0,
+                "no-restricted-syntax": 0,
+                "no-console": 0,
+            },
+        },
+    ],
 };

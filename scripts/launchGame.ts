@@ -1,8 +1,8 @@
 /**
  * This build script is responsible for deploying the mod to outDir.
  */
-import path from "path";
 import { execSync } from "child_process";
+import path from "path";
 import { config } from "./util/config";
 
 (() => {

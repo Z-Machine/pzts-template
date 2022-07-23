@@ -1,10 +1,9 @@
 /**
  * This build script is responsible for bundling the mod and deploying it to outDir.
  */
-import path from "path";
 import chalk from "chalk";
 import * as fs from "fs-extra";
-
+import path from "path";
 import { config, packageInfo } from "./util/config";
 
 (() => {
@@ -31,10 +30,9 @@ import { config, packageInfo } from "./util/config";
         fs.ensureDirSync(sharedDir);
         if (fs.statSync(zomboidLua).isFile()) {
             const copyLocation = path.join(sharedDir, path.basename(zomboidLua));
-            fs.copySync(zomboidLua, copyLocation)
+            fs.copySync(zomboidLua, copyLocation);
         }
     }
-
 
     console.timeLog(timeLabel, chalk.green("Copying lua files..."));
     const luaDir = path.join(modDir, `./media/lua/`);

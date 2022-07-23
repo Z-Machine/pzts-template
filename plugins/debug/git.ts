@@ -21,21 +21,17 @@ export function transformCommitId(expression: ts.CallExpression): ts.StringLiter
 
     if (argument && argument.kind === ts.SyntaxKind.TrueKeyword) {
         return factory.createStringLiteral(commit);
-    } else {
-        return factory.createStringLiteral(commit.substr(0, 7));
     }
+    return factory.createStringLiteral(commit.substr(0, 7));
 }
 
 export function stringArgsToSet<K extends string = string>(
     expressions: readonly ts.Expression[],
-    constraints?: ReadonlyArray<K>
+    constraints?: readonly K[]
 ): ReadonlySet<K> {
     const set = new Set<K>();
     for (const value of expressions) {
-        if (
-            ts.isStringLiteral(value) &&
-            (constraints === undefined || constraints.includes(value.text as K))
-        ) {
+        if (ts.isStringLiteral(value) && (constraints === undefined || constraints.includes(value.text as K))) {
             set.add(value.text as K);
         }
     }
@@ -78,7 +74,7 @@ export function transformGit(expression: ts.CallExpression): ts.AsExpression {
 
     if (dateString === undefined) {
         try {
-            const timeStamp = parseInt(execSync(`git show -s --format=%ct`).toString().replace("\n", ""));
+            const timeStamp = parseInt(execSync(`git show -s --format=%ct`).toString().replace("\n", ""), 10);
             dateString = new Date(timeStamp * 1000).toISOString();
             unixTimestamp = timeStamp;
         } catch (err) {
@@ -101,42 +97,29 @@ export function transformGit(expression: ts.CallExpression): ts.AsExpression {
     const properties = new Array<PropertyAssignment>();
 
     if (toInclude.has("Branch"))
-        properties.push(
-            factory.createPropertyAssignment("Branch", factory.createStringLiteral(branch))
-        );
+        properties.push(factory.createPropertyAssignment("Branch", factory.createStringLiteral(branch)));
 
     if (toInclude.has("Commit"))
-        properties.push(
-            factory.createPropertyAssignment(
-                "Commit",
-                factory.createStringLiteral(commit.substr(0, 7))
-            )
-        );
+        properties.push(factory.createPropertyAssignment("Commit", factory.createStringLiteral(commit.substr(0, 7))));
 
     if (toInclude.has("CommitHash"))
-        properties.push(
-            factory.createPropertyAssignment("CommitHash", factory.createStringLiteral(commit))
-        );
+        properties.push(factory.createPropertyAssignment("CommitHash", factory.createStringLiteral(commit)));
 
     if (toInclude.has("LatestTag"))
-        properties.push(
-            factory.createPropertyAssignment("LatestTag", factory.createStringLiteral(tag))
-        );
+        properties.push(factory.createPropertyAssignment("LatestTag", factory.createStringLiteral(tag)));
 
     if (toInclude.has("ISODate"))
         properties.push(
             factory.createPropertyAssignment(
                 "ISODate",
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 factory.createStringLiteral(dateString ?? new Date().toISOString())
             )
         );
 
     if (toInclude.has("Timestamp"))
         properties.push(
-            factory.createPropertyAssignment(
-                "Timestamp",
-                factory.createNumericLiteral(unixTimestamp ?? 0)
-            )
+            factory.createPropertyAssignment("Timestamp", factory.createNumericLiteral(unixTimestamp ?? 0))
         );
 
     return factory.createAsExpression(

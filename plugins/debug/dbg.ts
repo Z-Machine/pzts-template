@@ -2,11 +2,7 @@ import ts, { factory } from "typescript";
 import { createDebugPrefixLiteral, getDebugInfo, transformerDiagnostic } from "./util";
 
 function createPrintCallExpression(argumentsArray: ts.Expression[]) {
-    return factory.createCallExpression(
-        factory.createIdentifier("print"),
-        undefined,
-        argumentsArray
-    );
+    return factory.createCallExpression(factory.createIdentifier("print"), undefined, argumentsArray);
 }
 
 export function transformToInlineDebugPrint(node: ts.Expression): ts.Expression {
@@ -21,9 +17,7 @@ export function transformToInlineDebugPrint(node: ts.Expression): ts.Expression 
 export function createIIFEBlock(id: ts.Identifier, argument: ts.Expression): ts.Block {
     return factory.createBlock(
         [
-            factory.createExpressionStatement(
-                createPrintCallExpression([createDebugPrefixLiteral(argument), id])
-            ),
+            factory.createExpressionStatement(createPrintCallExpression([createDebugPrefixLiteral(argument), id])),
             factory.createReturnStatement(id),
         ],
         true
@@ -38,22 +32,10 @@ export function createDebugObject(expression: ts.Expression): ts.ObjectLiteralEx
     const info = getDebugInfo(expression);
     return factory.createObjectLiteralExpression(
         [
-            factory.createPropertyAssignment(
-                `file`,
-                factory.createStringLiteral(info.relativePath)
-            ),
-            factory.createPropertyAssignment(
-                `lineNumber`,
-                factory.createNumericLiteral(info.linePos)
-            ),
-            factory.createPropertyAssignment(
-                `character`,
-                factory.createNumericLiteral(info.lineChar)
-            ),
-            factory.createPropertyAssignment(
-                `rawText`,
-                factory.createStringLiteral(expression.getText())
-            ),
+            factory.createPropertyAssignment(`file`, factory.createStringLiteral(info.relativePath)),
+            factory.createPropertyAssignment(`lineNumber`, factory.createNumericLiteral(info.linePos)),
+            factory.createPropertyAssignment(`character`, factory.createNumericLiteral(info.lineChar)),
+            factory.createPropertyAssignment(`rawText`, factory.createStringLiteral(expression.getText())),
         ],
         true
     );
@@ -106,6 +88,7 @@ export function transformToIIFEDebugPrint(
                 body,
                 parameters: [sourceParam, debugInfo],
             } = customHandler;
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             const valueId = factory.createIdentifier(sourceParam!.name.getText());
 
             const checker = program.getTypeChecker();
@@ -134,14 +117,7 @@ export function transformToIIFEDebugPrint(
                     factory.createArrowFunction(
                         undefined,
                         undefined,
-                        [
-                            factory.createParameterDeclaration(
-                                undefined,
-                                undefined,
-                                undefined,
-                                valueId
-                            ),
-                        ],
+                        [factory.createParameterDeclaration(undefined, undefined, undefined, valueId)],
                         undefined,
                         undefined,
                         createCustomIIFEBlock(expression, body, valueId, debugInfo)

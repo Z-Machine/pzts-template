@@ -1,3 +1,5 @@
+// TODO: fix this?
+/* eslint-disable no-useless-escape */
 interface Rule {
     name: string;
     regex: RegExp;
@@ -91,7 +93,7 @@ const rules: Rule[] = [
 /**
  * Converts Markdown into SteamBB code.
  */
-export function ConvertMD2BB(data: string): string {
+export default function ConvertMD2BB(data: string): string {
     rules.forEach((rule) => {
         data = data.replace(rule.regex, rule.replacement);
     });

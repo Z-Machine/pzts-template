@@ -19,8 +19,8 @@
         "dev": "tstl --project src/tsconfig.build.json --watch",
         "game": "ts-node scripts/launchGame.ts",
         "bundle": "ts-node scripts/bundle.ts",
-        "lint": "eslint --ext .ts,tsx src/",
-        "lint:fix": "eslint --fix --ext .ts,tsx src/"
+        "lint": "eslint --ext .ts,tsx src/ plugins/ scripts/",
+        "lint:fix": "eslint --fix --ext .ts,tsx src/ plugins/ scripts/"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.13",

@@ -5,11 +5,7 @@ declare interface $DebugInfo {
     rawText: string;
 }
 
-declare function $dbg<T>(expression: T): T;
-declare function $dbg<T>(
-    expression: T,
-    customHandler: (value: Readonly<T>, debbug: $DebugInfo) => void
-): T;
+declare function $dbg<T>(expression: T, customHandler?: (value: Readonly<T>, debbug: $DebugInfo) => void): T;
 
 /**
  * Will prefix a print statement with `[filePath:fileNumber]`
