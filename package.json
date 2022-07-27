@@ -20,7 +20,7 @@
         "game": "ts-node scripts/launchGame.ts",
         "bundle": "ts-node scripts/bundle.ts",
         "lint": "eslint --ext .ts,tsx src/ plugins/ scripts/",
-        "lint:fix": "eslint --fix --ext .ts,tsx src/ plugins/ scripts/"
+        "fix": "npm run lint -- --fix"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.13",
