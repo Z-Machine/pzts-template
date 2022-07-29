@@ -6,5 +6,5 @@ makeHello("Client");
 makeHelloClient("Client");
 
 onGameTimeLoaded.addListener(() => {
-    $print(`onGameTimeLoaded was fired.`);
+    // $print(`onGameTimeLoaded was fired.`);
 });
