@@ -11,7 +11,7 @@ function loadJson<T>(str: string): T {
         throw `${file} is not a file.`;
     }
     return fs.readJSONSync(file, {
-        encoding: "utf-u",
+        encoding: "utf-8",
     }) as T;
 }
 
@@ -26,13 +26,14 @@ export interface Config {
     /** workshop.txt in json form. */
     workshop: {
         /** Is this ever not 1? */
-        version: "1";
+        version: string;
         id: string;
         title: string;
         /** Point this at a markdown file such as README.md */
-        descriptionFile: string;
+        description: string;
         tags: string;
         visibility: "public" | "friendsOnly";
+        preview: string;
     };
     /** The path where the bundled mod should be copied. */
     outDir: string;
